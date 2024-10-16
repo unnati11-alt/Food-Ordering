@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="a1.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+    <div class="admin-dashboard">
+        <!-- Left Side Panel -->
+        <div class="sidebar">
+            <h2>Admin Panel</h2>
+            <ul>
+                <li onclick="showSection('dashboard')">Dashboard</li>
+                <li onclick="showSection('manage-users')">Manage Customer</li>
+                <li onclick="showSection('manage-shops')">Manage Restaurant</li>
+                <li onclick="showSection('create-discount')">Discount Codes</li>
+
+            </ul>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <section id="dashboard" class="section active">
+                <h1>Dashboard</h1>
+                
+                <!-- Small boxes in two rows -->
+                <div class="dashboard-boxes">
+                    <div class="small-box">
+                        <h3>Total Customers</h3>
+                        <p>150</p>
+                    </div>
+                    <div class="small-box">
+                        <h3>Total Restaurant</h3>
+                        <p>20</p>
+                    </div>
+                    <div class="small-box">
+                        <h3>Total Sales</h3>
+                        <p>Rs.5000</p>
+                    </div>
+                    <div class="small-box">
+                        <h3>Completed Orders</h3>
+                        <p>120</p>
+                    </div>
+                </div>
+                
+                <!-- Larger boxes for graphs -->
+                <div class="dashboard-graphs">
+                    <div class="graph-box">
+                        <h3>Customer Reports</h3>
+                        <canvas id="customerChart"></canvas>
+                    </div>
+                    <div class="graph-box">
+                        <h3>Sales Reports</h3>
+                        <canvas id="salesChart"></canvas>
+                    </div>
+                </div>
+            </section>
+            
+            
+            <!-- Manage Users Section -->
+            <section id="manage-users" class="section">
+                <h1>Manage Customer</h1>
+                <input type="text" id="userSearch" placeholder="Search for Customers..." onkeyup="searchUsers()">
+                
+                <!-- Customer Table in a box -->
+                <div class="user-table-box">
+                    <table id="userTable">
+                        <thead>
+                            <tr>
+                                <th>Customer ID</th>
+                                <th>Name</th>
+                                <th>Orders</th>
+                                <th>Payments</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-user="1">
+                                <td>1</td>
+                                <td><a href="javascript:void(0);" onclick="showOrderHistory(1)">Ananya</a></td>
+                                <td>5</td>
+                                <td>Rs.950</td>
+                            </tr>
+                            <tr data-user="2">
+                                <td>2</td>
+                                <td><a href="javascript:void(0);" onclick="showOrderHistory(2)">Archi</a></td>
+                                <td>3</td>
+                                <td>Rs.750</td>
+                            </tr>
+                            <tr data-user="3">
+                                <td>3</td>
+                                <td><a href="javascript:void(0);" onclick="showOrderHistory(3)">Unnati</a></td>
+                                <td>10</td>
+                                <td>Rs.850</td>
+                            </tr>
+                        </tbody>                        
+                    </table>
+                </div>
+
+
+
+
+                <div id="order-history" style="display:none;">
+                    <button id="backButton" onclick="goBackToCustomerList()">
+                        <span class="arrow">←</span> Back to Customer
+                    </button>
+                    
+   <!--              <button id="backButton" onclick="goBackToCustomerList()" style="display:none;">Back to Customer List</button>       -->  
+                    <h2>Order History for <span id="customer-name"></span></h2>
+                    <table id="orderHistoryTable">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Order Date</th>
+                                <th>Payment Mode</th>
+                                <th>Check</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Order details will be dynamically inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+
+
+
+            </section>
+
+            <!-- Manage Shops Section -->
+            <section id="manage-shops" class="section">
+                <h1>Manage Restaurant</h1>
+            
+                <!-- Shop Table in a box -->
+                <div class="shop-table-box">
+                    <table id="shopTable">
+                        <thead>
+                            <tr>
+                                <th>Restaurant ID</th>
+                                <th>Restaurant Name</th>
+                                <th>Adress</th>
+                                <th>Update</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Mukteshwari</td>
+                                <td>Front of Surya Mandir</td>
+                                <td><button>Update</button></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Agrawal Canteen</td>
+                                <td>Old market</td>
+                                <td><button>Update</button></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Spicy Bite</td>
+                                <td>Front of Surya Mandi</td>
+                                <td><button>Update</button></td>
+                            </tr>
+                            <tr></tr>
+                                <td>4</td>
+                                <td>Fun & Frolic</td>
+                                <td>New Market</td>
+                                <td><button>Update</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            
+            
+
+            <!-- Discount Codes Section -->
+            <section id="create-discount" class="section">
+                <h1>Create/Update Discount Code</h1>
+            
+                <!-- Discount Code Form in a box -->
+                <div class="discount-box">
+                    <form id="discountForm">
+                        <label for="code">Discount Code</label>
+                        <input type="text" id="code" placeholder="Enter Discount Code">
+            
+                        <label for="percentage">Discount Percentage</label>
+                        <input type="number" id="percentage" placeholder="Enter Discount Percentage">
+
+                        <label for="expiry-date">Expiry Date</label>
+                        <input type="date" id="expiry-date" placeholder="Enter Expiry Date">
+            
+                        <button type="submit">Create/Update Code</button>
+                    </form>
+                </div>
+            </section>
+            
+        </div>
+    </div>
+
+    <script src="a.js"></script>
+</body>
+</html>

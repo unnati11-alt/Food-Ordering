@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Delivery Admin Panel</title>
+    <link rel="stylesheet" href="nd.css">
+</head>
+<body>
+    <div class="sidebar">
+        <a href="#dashboard" class="active" onclick="showContent('dashboard')">Dashboard</a>
+        <a href="#order-management" onclick="showContent('order-management')">Order Management</a>
+        <a href="#update-menu" onclick="showContent('update-menu')">Update Menu</a>
+        <a href="#make-discount-code" onclick="showContent('make-discount-code')">Make Discount Code</a>
+        <a href="#review-feedback" onclick="showContent('review-feedback')">Review/Feedback</a>
+        <a href="#settings" onclick="showContent('settings')">Settings</a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <div id="dashboard" class="content-section" style="display: block;">
+        <h1>Dashboard</h1>
+    
+        <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+            <!-- Total Monthly Sales Graph -->
+            <div class="dashboard-card" style="flex: 1; min-width: 300px;">
+                <h2>Total Monthly Sales</h2>
+                <canvas id="salesChart" style="max-width: 100%;"></canvas>
+            </div>
+    
+            <!-- Most Selling Dish -->
+            <div class="dashboard-card" style="flex: 1; min-width: 300px;">
+                <h2>Most Selling Dish</h2>
+                <div id="mostSellingDish" style="padding: 10px;">
+                    <h3>Pizza Margherita</h3>
+                    <p><strong>Sold:</strong> 300 units</p>
+                    <p><strong>Revenue:</strong> $4,500</p>
+                </div>
+            </div>
+    
+            <!-- Customer Statistical Graph -->
+            <div class="dashboard-card" style="flex: 1; min-width: 300px;">
+                <h2>Customer Statistics</h2>
+                <canvas id="customerStatsChart" style="max-width: 100%;"></canvas>
+            </div>
+        </div>
+    
+        <!-- Important Records Section -->
+        <div class="dashboard-card" style="margin-top: 40px;">
+            <h2>Important Records</h2>
+            <ul>
+                <li><strong>Total Orders This Month:</strong> 1,234</li>
+                <li><strong>Total Revenue:</strong> $12,345</li>
+                <li><strong>Total Customers:</strong> 1,123</li>
+                <li><strong>Average Rating:</strong> 4.5/5</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div id="order-management" class="content-section" style="display: none;">
+        <h1>Order Management</h1>
+    
+        <!-- Tabs -->
+        <div class="tab-menu">
+            <button class="active" onclick="showSection('new-orders')">New</button>
+            <button onclick="showSection('in-progress-orders')">In Progress</button>
+            <button onclick="showSection('completed-orders')">Completed</button>
+            <button onclick="showSection('canceled-orders')">Canceled</button>
+        </div>
+        
+        <div class="search-orders">
+            <input type="text" placeholder="Search Orders" onkeyup="filterOrders(event)">
+        </div>
+    
+        <!-- New Orders Section -->
+        <div class="orders-section active" id="new-orders">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Customer</th>
+                        <th>Items</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Sample Orders -->
+                    <tr class="order" data-order-id="001">
+                        <td>001</td>
+                        <td>John Doe</td>
+                        <td>Pizza, Burger</td>
+                        <td>
+                            <select onchange="updateStatus(this)">
+                                <option value="New" selected>New</option>
+                                <option value="In Progress">In Progress</option>
+                                <option value="Completed">Completed</option>
+                                <option value="Canceled">Canceled</option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    
+        <!-- In Progress Orders Section -->
+        <div class="orders-section" id="in-progress-orders">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Customer</th>
+                        <th>Items</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="order" data-order-id="002">
+                        <td>002</td>
+                        <td>Jane Smith</td>
+                        <td>Pasta, Salad</td>
+                        <td>
+                            <select onchange="updateStatus(this)">
+                                <option value="New">New</option>
+                                <option value="In Progress" selected>In Progress</option>
+                                <option value="Completed">Completed</option>
+                                <option value="Canceled">Canceled</option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    
+        <!-- Completed Orders Section -->
+        <div class="orders-section" id="completed-orders">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Customer</th>
+                        <th>Items</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="order" data-order-id="003">
+                        <td>003</td>
+                        <td>Bob Johnson</td>
+                        <td>Sushi, Miso Soup</td>
+                        <td>
+                            <select onchange="updateStatus(this)">
+                                <option value="New">New</option>
+                                <option value="In Progress">In Progress</option>
+                                <option value="Completed" selected>Completed</option>
+                                <option value="Canceled">Canceled</option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    
+        <!-- Canceled Orders Section -->
+        <div class="orders-section" id="canceled-orders">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Customer</th>
+                        <th>Items</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="order" data-order-id="004">
+                        <td>004</td>
+                        <td>Alice Brown</td>
+                        <td>Taco, Nachos</td>
+                        <td>
+                            <select onchange="updateStatus(this)">
+                                <option value="New">New</option>
+                                <option value="In Progress">In Progress</option>
+                                <option value="Completed">Completed</option>
+                                <option value="Canceled" selected>Canceled</option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    
+    
+    <div class="content-section" id="update-menu" style="display: none;">
+        <h1>Update Menu</h1>
+        <div class="update-menu">
+            <h3>Add New Item</h3>
+            <input type="text" id="item-name" placeholder="Item Name">
+            <input type="text" id="item-price" placeholder="Item Price">
+            <input type="text" id="item-description" placeholder="Item Description">
+            <button onclick="addItem()">Add Item</button>
+
+            <h3>Existing Menu Items</h3>
+            <!-- Existing items will be listed here -->
+            <div class="item">
+                <p>Item Name: Example Item</p>
+                <p>Price: $10.00</p>
+                <p>Description: Delicious example item.</p>
+                <button onclick="editItem()">Edit</button>
+                <button onclick="deleteItem()">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section" id="make-discount-code" style="display: none;">
+        <h1>Make Discount Code</h1>
+        <p>Create and manage discount codes for special offers and promotions.</p>
+        <div class="create-discount-box">
+            <h3>Create New Discount Code</h3>
+            <label for="discount-code-name">Code Name:</label>
+            <input type="text" id="discount-code-name" placeholder="Enter discount code name">
+            <label for="discount-percentage">Discount Percentage:</label>
+            <input type="number" id="discount-percentage" placeholder="Enter discount percentage">
+            <label for="discount-expiration">Expiration Date:</label>
+            <input type="date" id="discount-expiration">
+            <button onclick="createDiscountCode()">Create Discount Code</button>
+        </div>
+
+        <div class="discount-codes-list">
+            <h3>Existing Discount Codes</h3>
+            <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+                <thead>
+                    <tr style="background-color: #f2f2f2;">
+                        <th style="padding: 10px; border: 1px solid #ddd;">Code Name</th>
+                        <th style="padding: 10px; border: 1px solid #ddd;">Discount Percentage</th>
+                        <th style="padding: 10px; border: 1px solid #ddd;">Expiration Date</th>
+                        <th style="padding: 10px; border: 1px solid #ddd;">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="discountTableBody">
+                    <!-- Discount codes will be dynamically added here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="content-section" id="review-feedback" style="display: none;">
+        <h1>Customer Reviews & Feedback</h1>
+        <p>Read feedback from our customers and check their ratings.</p>
+        <div class="reviews-list">
+            <div class="review-box">
+                <h4>John Doe</h4>
+                <p>"The food was delicious, and the delivery was on time. Will order again!"</p>
+                <p>Rating: ★★★★★</p>
+            </div>
+            <div class="review-box">
+                <h4>Jane Smith</h4>
+                <p>"Great service, but the pasta could have been warmer. Still, I’m satisfied with the experience."</p>
+                <p>Rating: ★★★★☆</p>
+            </div>
+            <div class="review-box">
+                <h4>Alice Johnson</h4>
+                <p>"I received the wrong order, but the customer service was quick to resolve the issue. Much appreciated!"</p>
+                <p>Rating: ★★★☆☆</p>
+            </div>
+            <div class="review-box">
+                <h4>Michael Brown</h4>
+                <p>"Tasty food, but the delivery took longer than expected. I'll give it another try next time."</p>
+                <p>Rating: ★★★★☆</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section" id="settings" style="display: none;">
+        <h1>Settings</h1>
+        <p>Update your account settings, preferences, and other options.</p>
+    </div>
+
+    <script src="nd.js"></script>
+</body>
+</html>

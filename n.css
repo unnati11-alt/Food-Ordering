@@ -1,0 +1,134 @@
+/* Ensure background is fixed and covers the entire viewport */
+/* Ensure background is fixed and covers the entire viewport */
+body {
+    font-family: 'Arial', sans-serif;
+    background: url('background-image.jpg') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevents scrolling on the body */
+}
+
+/* Container for registration */
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Prevent scrolling on the container itself */
+}
+
+/* Box for registration */
+.register-box {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 40px;
+    border-radius: 10px;
+    color: #fff;
+    width: 100%;
+    max-width: 500px; /* Adjust as needed */
+    max-height: 90vh; /* Maximum height of 90% of viewport height */
+    overflow-y: scroll; /* Allows vertical scrolling if content overflows */
+    box-sizing: border-box; /* Includes padding in width/height calculations */
+    position: relative; /* Ensure proper positioning within the container */
+}
+
+/* Hide scrollbars but allow scrolling */
+.register-box::-webkit-scrollbar {
+    display: none; /* Hides the scrollbar in WebKit browsers */
+}
+
+.register-box {
+    -ms-overflow-style: none; /* Hides scrollbars in IE and Edge */
+    scrollbar-width: none; /* Hides scrollbars in Firefox */
+}
+
+/* For responsiveness */
+@media (max-width: 768px) {
+    .register-box {
+        max-width: 90%;
+    }
+}
+
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-box {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 40px;
+    border-radius: 10px;
+    color: #fff;
+    width: 100%;
+    max-width: 400px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+    color: #fff;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Admin Icon Styling */
+.admin-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.admin-icon img {
+    width: 50px;
+    height: 50px;
+}
+
+/* Common Icon Styling */
+
+.common-icon {
+    position: absolute;
+    top: 20px;
+    right: 80px;
+    cursor: pointer;
+    z-index: 10; /* Ensure it's above other elements */
+}
+
+.common-icon img {
+    width: 50px;
+    height: 50px;
+}
+.common-icon {
+    pointer-events: auto; /* Ensure the element can be clicked */
+}

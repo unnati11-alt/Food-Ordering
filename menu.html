@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Menu - FoodDeliverIt</title>
+    <style>
+        /* Common styles */
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; }
+        .navbar { background-color: #fff; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); }
+        .navbar a { text-decoration: none; color: #666; margin-right: 15px; padding: 8px 12px; border-radius: 5px; }
+        .navbar a:hover { color: #333; background-color: #f0d6b6; }
+        .navbar a.active { color: #cfa682; background-color: #f0d6b6; }
+        .container { max-width: 1200px; margin: 20px auto; padding: 20px; background-color: #fff; box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1); border-radius: 8px; }
+        h1 { color: #333; margin-bottom: 20px; }
+        .form-group { margin-bottom: 15px; }
+        label { font-weight: bold; margin-bottom: 5px; display: block; }
+        input, textarea, select { width: 20%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; }
+        button { padding: 10px 15px; background-color: #cfa682; border: none; color: #fff; border-radius: 5px; cursor: pointer; }
+        button:hover { background-color: #b38868; }
+        .menu-list { margin-top: 30px; }
+        .menu-item { padding: 15px; border: 1px solid #ddd; margin-bottom: 10px; border-radius: 5px; background-color: #f9f9f9; }
+        .menu-item h3 { margin: 0 0 10px; }
+        .menu-item p { margin: 5px 0; }
+        .menu-actions { display: flex; justify-content: flex-end; }
+        .menu-actions button { margin-left: 10px; }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="ordermanage.html">Order Management</a>
+            <a href="update-menu.html" class="active">Update Menu</a>
+            <a href="make-discount-code.html">Make Discount Code</a>
+            <a href="review-feedback.html">Review/Feedback</a>
+            <a href="settings.html">Settings</a>
+        </div>
+    </div>
+
+    <!-- Container -->
+    <div class="container">
+        <h1>Update Menu</h1>
+
+        <!-- Form to Add New Menu Item -->
+        <h2>Add New Menu Item</h2>
+        <form id="add-menu-form">
+            <div class="form-group">
+                <label for="name">Dish Name:</label>
+                <input type="text" id="name" placeholder="Enter dish name" required>
+            </div>
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="number" id="price" placeholder="Enter price" required>
+            </div>
+            <div class="form-group">
+                <label for="category">Category:</label>
+                <select id="category" required>
+                    <option value="Appetizer">Appetizer</option>
+                    <option value="Main Course">Main Course</option>
+                    <option value="Dessert">Dessert</option>
+                    <option value="Beverage">Beverage</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea id="description" rows="4" placeholder="Enter dish description" required></textarea>
+            </div>
+            <button type="submit">Add Item</button>
+        </form>
+
+        <!-- Menu List -->
+        <div class="menu-list">
+            <h2>Current Menu</h2>
+            <div class="menu-item">
+                <h3>Pizza - $12</h3>
+                <p>Category: Main Course</p>
+                <p>Description: Delicious cheesy pizza with toppings of your choice.</p>
+                <div class="menu-actions">
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn">Delete</button>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <h3>Caesar Salad - $8</h3>
+                <p>Category: Appetizer</p>
+                <p>Description: Fresh salad with Caesar dressing and croutons.</p>
+                <div class="menu-actions">
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn">Delete</button>
+                </div>
+            </div>
+
+            <!-- More items can be dynamically generated here -->
+        </div>
+    </div>
+
+    <script>
+        // Add Menu Item Functionality
+        document.getElementById('add-menu-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const price = document.getElementById('price').value;
+            const category = document.getElementById('category').value;
+            const description = document.getElementById('description').value;
+
+            // Create a new menu item (this can be linked to backend to store in database)
+            const menuItem = document.createElement('div');
+            menuItem.classList.add('menu-item');
+            menuItem.innerHTML = `
+                <h3>${name} - $${price}</h3>
+                <p>Category: ${category}</p>
+                <p>Description: ${description}</p>
+                <div class="menu-actions">
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn">Delete</button>
+                </div>
+            `;
+
+            document.querySelector('.menu-list').appendChild(menuItem);
+
+            // Clear the form fields after adding
+            document.getElementById('name').value = '';
+            document.getElementById('price').value = '';
+            document.getElementById('category').value = 'Appetizer';
+            document.getElementById('description').value = '';
+        });
+
+        // Edit/Delete buttons functionality can be added here.
+    </script>
+
+</body>
+</html>

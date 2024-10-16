@@ -1,0 +1,353 @@
+ /* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 200px;
+    background-color: #f4f4f4;
+    padding: 10px;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+.sidebar a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    background-color: #eee;
+}
+
+.sidebar a.active {
+    background-color: #ddd;
+    font-weight: bold;
+}
+
+/* Content Section Styles */
+.content-section {
+    margin-left: 220px;
+    padding: 20px;
+}
+/* Card style for dashboard boxes */
+.dashboard-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    flex: 1;
+    min-width: 300px;
+}
+
+/* Flex container for dashboard sections */
+#dashboard .flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Chart canvas styling */
+canvas {
+    width: 100%;
+    height: 300px;
+}
+
+/* Important Records styling */
+.dashboard-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.dashboard-card ul li {
+    margin-bottom: 10px;
+    color: #666;
+}
+
+.dashboard-card ul li strong {
+    color: #000;
+}
+
+
+/* Tab Menu Styles */
+.tab-menu {
+    margin-bottom: 10px;
+}
+
+.tab-menu button {
+    padding: 10px;
+    margin-right: 5px;
+    border: 1px solid #ddd;
+    background-color: #483e3e;
+    cursor: pointer;
+}
+
+.tab-menu button.active {
+    background-color: #ddd;
+    font-weight: bold;
+}
+
+.order-phase {
+    display: none;
+    margin-top: 10px;
+}
+
+.order-phase.active {
+    display: block;
+}
+
+.order-phase table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.order-phase th, .order-phase td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+
+/* Update Menu Styles */
+.update-menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.update-menu input,
+.update-menu button {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.update-menu button {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+.update-menu .item {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+
+/* Make Discount Code Styles */
+.create-discount-box {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
+}
+
+.create-discount-box input,
+.create-discount-box button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.create-discount-box button {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+.discount-codes-list table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.discount-codes-list th, .discount-codes-list td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.discount-codes-list button {
+    padding: 5px 10px;
+    background-color: #ff4c4c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Review/Feedback Styles */
+.reviews-list {
+    margin-top: 20px;
+}
+
+.review-box {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    background-color: #f4f4f4;
+    margin-bottom: 15px;
+}
+
+.review-box h4 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+.review-box p {
+    margin: 5px 0;
+}
+
+.review-box p:last-child {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Settings Styles */
+#settings {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+} 
+
+
+
+
+.order-management {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+.order-management h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+.tab-menu {
+    margin-bottom: 20px;
+}
+.tab-menu button {
+    background-color: #e3c19b;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+.tab-menu button:hover {
+    background-color: #cfa682;
+}
+.tab-menu button.active {
+    background-color: #cfa682;
+    font-weight: bold;
+}
+.search-orders {
+    float: right;
+    margin-bottom: 20px;
+}
+.search-orders input {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 200px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+table, th, td {
+    border: 1px solid #ddd;
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+thead {
+    background-color: #f0d6b6;
+}
+tbody tr {
+    background-color: #f9f9f9;
+}
+tbody tr:hover {
+    background-color: #f0d6b6;
+}
+select {
+    padding: 5px;
+    border-radius: 5px;
+}
+
+
+
+ 
+.order {
+    background-color: #f0d6b6;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+.order h3 {
+    margin: 0;
+    color: #333;
+}
+.order p {
+    margin: 5px 0;
+    color: #555;
+}
+.order select {
+    float: right;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.tab-menu {
+    margin-bottom: 10px;
+}
+
+.tab-menu button {
+    padding: 10px;
+    margin-right: 5px;
+    border: 1px solid #ddd;
+    background-color: #f2f2f2;
+    cursor: pointer;
+}
+
+.tab-menu button.active {
+    background-color: #ddd;
+    font-weight: bold;
+}
+
+
+
+.orders-section {
+    display: none;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+.orders-section .order {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+
+.orders-section .order select {
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}

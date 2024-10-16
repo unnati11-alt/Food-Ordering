@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Management - FoodDeliverIt</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+        }
+        .navbar a {
+            text-decoration: none;
+            color: #666;
+            margin: 0 15px;
+        }
+        .navbar a:hover {
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            margin: 0;
+            color: #333;
+        }
+        .order-management {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .order-management h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .tab-menu {
+            margin-bottom: 20px;
+        }
+        .tab-menu button {
+            background-color: #e3c19b;
+            border: none;
+            padding: 10px 20px;
+            margin-right: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .tab-menu button:hover {
+            background-color: #cfa682;
+        }
+        .tab-menu button.active {
+            background-color: #cfa682;
+            font-weight: bold;
+        }
+        .order {
+            background-color: #f0d6b6;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .order h3 {
+            margin: 0;
+            color: #333;
+        }
+        .order p {
+            margin: 5px 0;
+            color: #555;
+        }
+        .order select {
+            float: right;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        .search-orders {
+            float: right;
+            margin-bottom: 20px;
+        }
+        .search-orders input {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 200px;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #e3c19b;
+            color: #fff;
+            margin-top: 30px;
+        }
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .orders-section {
+            display: none;
+        }
+        .orders-section.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="#">FoodDeliverIt</a>
+        <div>
+            <a href="#">Dashboard</a>
+            <a href="#">Order Management</a>
+            <a href="#">Logout</a>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+
+        <!-- Header -->
+        <div class="header">
+            <h1>Order Management</h1>
+        </div>
+
+    <!-- Order Management Section -->
+<div class="order-management">
+
+    <!-- Tabs -->
+    <div class="tab-menu">
+        <button class="active" onclick="showSection('new-orders')">New</button>
+        <button onclick="showSection('in-progress-orders')">In Progress</button>
+        <button onclick="showSection('completed-orders')">Completed</button>
+        <button onclick="showSection('canceled-orders')">Canceled</button>
+        <div class="search-orders">
+            <input type="text" placeholder="Search Orders" onkeyup="filterOrders(event)">
+        </div>
+    </div>
+
+    <!-- New Orders Section -->
+    <div class="orders-section active" id="new-orders">
+        <!-- Sample Orders -->
+        <div class="order" data-order-id="001">
+            <h3>Order #001</h3>
+            <p>Customer: John Doe</p>
+            <p>Items: Pizza, Burger</p>
+            <select onchange="updateStatus(this)">
+                <option value="New" selected>New</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+                <option value="Canceled">Canceled</option>
+            </select>
+        </div>
+        <!-- Add more orders here -->
+    </div>
+
+    <!-- In Progress Orders Section -->
+    <div class="orders-section" id="in-progress-orders">
+        <!-- Sample Orders -->
+        <div class="order" data-order-id="002">
+            <h3>Order #002</h3>
+            <p>Customer: Jane Smith</p>
+            <p>Items: Pasta, Salad</p>
+            <select onchange="updateStatus(this)">
+                <option value="New">New</option>
+                <option value="In Progress" selected>In Progress</option>
+                <option value="Completed">Completed</option>
+                <option value="Canceled">Canceled</option>
+            </select>
+        </div>
+        <!-- Add more orders here -->
+    </div>
+
+    <!-- Completed Orders Section -->
+    <div class="orders-section" id="completed-orders">
+        <!-- Sample Orders -->
+        <div class="order" data-order-id="003">
+            <h3>Order #003</h3>
+            <p>Customer: Bob Johnson</p>
+            <p>Items: Sushi, Miso Soup</p>
+            <select onchange="updateStatus(this)">
+                <option value="New">New</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed" selected>Completed</option>
+                <option value="Canceled">Canceled</option>
+            </select>
+        </div>
+        <!-- Add more orders here -->
+    </div>
+
+    <!-- Canceled Orders Section -->
+    <div class="orders-section" id="canceled-orders">
+        <!-- Sample Orders -->
+        <div class="order" data-order-id="004">
+            <h3>Order #004</h3>
+            <p>Customer: Alice Brown</p>
+            <p>Items: Taco, Nachos</p>
+            <select onchange="updateStatus(this)">
+                <option value="New">New</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+                <option value="Canceled" selected>Canceled</option>
+            </select>
+        </div>
+        <!-- Add more orders here -->
+    </div>
+
+</div>
+
+<!-- JavaScript for Handling Tabs and Status Updates -->
+<script>
+    // Function to show the relevant section
+    function showSection(sectionId) {
+        // Hide all sections
+        const sections = document.querySelectorAll('.orders-section');
+        sections.forEach(section => {
+            section.style.display = 'none';
+        });
+
+        // Show the selected section
+        document.getElementById(sectionId).style.display = 'block';
+
+        // Update tab button styles
+        const buttons = document.querySelectorAll('.tab-menu button');
+        buttons.forEach(button => {
+            button.classList.remove('active');
+        });
+        document.querySelector(`.tab-menu button[onclick="showSection('${sectionId}')"]`).classList.add('active');
+    }
+
+    // Function to update order status
+    function updateStatus(selectElement) {
+        const orderDiv = selectElement.closest('.order');
+        const newStatus = selectElement.value;
+        const orderId = orderDiv.dataset.orderId;
+        
+        // Remove order from its current section
+        orderDiv.parentElement.removeChild(orderDiv);
+
+        // Add order to the new section based on status
+        const newSection = document.getElementById(`${newStatus.toLowerCase().replace(' ', '-')}-orders`);
+        newSection.appendChild(orderDiv);
+    }
+
+    // Function to filter orders based on search input
+    function filterOrders(event) {
+        const searchText = event.target.value.toLowerCase();
+        const orders = document.querySelectorAll('.order');
+
+        orders.forEach(order => {
+            const text = order.textContent.toLowerCase();
+            order.style.display = text.includes(searchText) ? 'block' : 'none';
+        });
+    }
+</script>
+
+<!-- CSS for Styling -->
+<style>
+    .tab-menu {
+        margin-bottom: 10px;
+    }
+
+    .tab-menu button {
+        padding: 10px;
+        margin-right: 5px;
+        border: 1px solid #ddd;
+        background-color: #f2f2f2;
+        cursor: pointer;
+    }
+
+    .tab-menu button.active {
+        background-color: #ddd;
+        font-weight: bold;
+    }
+
+    .search-orders input {
+        padding: 5px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+    .orders-section {
+        display: none;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 10px;
+    }
+
+    .orders-section .order {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 10px;
+        margin-bottom: 10px;
+        background-color: #f9f9f9;
+    }
+
+    .orders-section .order select {
+        padding: 5px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+</style>
+
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2023 FoodDeliverIt. All rights reserved.</p>
+        <a href="#">Privacy Policy</a> |
+        <a href="#">Terms of Service</a> |
+        <a href="#">Contact Us</a>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.orders-section');
+            sections.forEach(section => section.classList.remove('active'));
+
+            // Show the selected section
+            document.getElementById(sectionId).classList.add('active');
+
+            // Remove 'active' class from all buttons
+            const buttons = document.querySelectorAll('.tab-menu button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            // Add 'active' class to the clicked button
+            event.target.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>

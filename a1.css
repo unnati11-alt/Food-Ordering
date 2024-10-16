@@ -1,0 +1,374 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #011406; /* Dark black background */
+}
+
+/* Admin Dashboard Layout */
+.admin-dashboard {
+    display: flex;
+    height: 100vh;
+}
+
+/* Dashboard Boxes (two rows) */
+.dashboard-boxes {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Ensure they wrap into two rows */
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.small-box {
+    background-color: rgba(0, 0, 0, 0.4); /* Transparent black for glassy effect */
+    backdrop-filter: blur(10px); /* Blur effect for glassy look */
+    color: #E0E0E0; /* Light grey text */
+    padding: 15px;
+    width: 48%; /* Two boxes per row */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Softer shadow */
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.small-box h3 {
+    margin-bottom: 10px;
+    color: #FFFFFF; /* White text */
+}
+
+.small-box p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #D4F8E8; /* Light green for important text */
+}
+
+/* Larger Graph Boxes */
+.dashboard-graphs {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.graph-box {
+    background-color: rgba(0, 0, 0, 0.4); /* Transparent black for glassy effect */
+    backdrop-filter: blur(10px); /* Blur effect for glassy look */
+    color: #E0E0E0; /* Light grey */
+    padding: 15px;
+    width: 48%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    height: 300px;
+}
+
+.graph-box h3 {
+    margin-bottom: 15px;
+    color: #FFFFFF; /* White text */
+}
+
+.graph-box canvas {
+    width: 100%;
+    height: 200px;
+}
+
+/* Customer Table in a Box */
+.user-table-box {
+    background-color: rgba(0, 0, 0, 0.4); /* Transparent black */
+    backdrop-filter: blur(10px); /* Glassy blur effect */
+    padding: 15px;
+    color: #E0E0E0; /* Light grey */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+}
+
+.user-table-box table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.user-table-box th, .user-table-box td {
+    padding: 10px;
+    border: 1px solid #444; /* Darker border */
+    text-align: left;
+}
+
+.user-table-box th {
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent header */
+    font-weight: bold;
+    color: #FFFFFF; /* White text */
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 250px;
+    background-color: rgba(65, 115, 54, 0.8); /* Transparent black */
+    color: #ffffff;
+    padding: 20px;
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    padding: 15px;
+    margin: 10px 0;
+    background-color: rgba(255, 255, 255, 0.1); /* Transparent white */
+    cursor: pointer;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.sidebar ul li:hover {
+    background-color: #555; /* Darker hover */
+}
+
+/* Main Content Area */
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #193320; /* Dark black background */
+}
+/* Make the Dashboard heading white */
+/* Make all section h1 headings white */
+.section h1 {
+    color: #FFFFFF; /* White color for all section headings */
+}
+
+
+
+/* Section Visibility */
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #444;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+/* Shop Management Section */
+.shop-management {
+    margin-top: 20px;
+}
+
+/* Shop Table in a Box */
+.shop-table-box {
+    background-color: rgba(0, 0, 0, 0.4); /* Transparent black */
+    backdrop-filter: blur(10px); /* Glassy effect */
+    padding: 15px;
+    color: #E0E0E0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+}
+
+.shop-table-box th, .shop-table-box td {
+    padding: 10px;
+    border: 1px solid #444; /* Darker border */
+}
+
+.shop-table-box th {
+    background-color: rgba(255, 255, 255, 0.1);
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+/* Discount Code Form in a Box */
+.discount-box {
+    background-color: rgba(0, 0, 0, 0.4); /* Transparent black */
+    backdrop-filter: blur(10px); /* Glassy blur effect */
+    padding: 15px;
+    color: #E0E0E0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+.discount-box form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.discount-box input, .discount-box button {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+}
+
+.discount-box button {
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.discount-box button:hover {
+    background-color: #555;
+}
+
+.discount-box input[type="date"] {
+    border: 1px solid #ccc;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .small-box, .graph-box {
+        width: 100%; /* Full width on smaller screens */
+    }
+
+    .sidebar {
+        width: 200px;
+    }
+}
+
+@media (max-width: 600px) {
+    table, th, td {
+        display: block;
+        width: 100%;
+    }
+    
+    th {
+        background-color: #444;
+        color: white;
+    }
+    
+    td {
+        margin-bottom: 10px;
+        border: none;
+        border-bottom: 1px solid #ccc;
+    }
+}
+
+/* Hide order history table initially */
+#order-history {
+    display: none;
+}
+
+/* Optionally, to reset customer table visibility when needed */
+.user-table-box {
+    display: block; /* Reset back to visible when needed */
+}
+
+
+
+
+/* General rule for making all text white */
+body {
+    color: white; /* This will make all text white by default */
+}
+
+/* Ensure table text is also white */
+table, th, td {
+    color: white; /* Make text in table cells white */
+}
+
+/* Back button styling */
+/* Style the back button */
+#backButton {
+    color: white;                          /* White text */
+    background-color: #444;                /* Dark background */
+    border: none;                          /* Remove border */
+    padding: 10px 20px;                    /* Add some padding */
+    cursor: pointer;                       /* Pointer cursor */
+    border-radius: 5px;                    /* Rounded corners */
+    display: flex;                         /* Flexbox for alignment */
+    align-items: center;                   /* Vertically align content */
+    justify-content: center;               /* Center content */
+    font-size: 16px;                       /* Adjust text size */
+    font-weight: bold;                     /* Make the text bold */
+}
+
+/* Add a small margin to the arrow */
+#backButton .arrow {
+    margin-right: 10px;
+}
+
+/* Hover effect for the back button */
+#backButton:hover {
+    background-color: #666;                /* Slightly lighter background on hover */
+}
+
+
+/* Optional: Style Take Action button */
+button {
+    color: white; /* Button text white */
+    background-color: #444; /* Dark background */
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* Style the table headers */
+table th {
+    background-color: #333; /* Optional: Darker header background */
+    color: white; /* White text */
+}
+
+/* Style the table rows */
+table tr {
+    background-color: #222; /* Optional: Dark row background */
+}
+
+/* Ensure the customer list and order history sections also have white text */
+.section {
+    color: white;
+}
+
+
+
+/* Ensure table text is white */
+table, th, td {
+    color: white;
+}
+
+/* Remove blue color and underline from customer names */
+.customer-name {
+    color: white; /* White text */
+    text-decoration: none; /* No underline */
+    cursor: pointer;
+}
+
+/* Highlight payment issues (red button if both payment is not done and order is not received) */
+button.take-action-red {
+    background-color: red; /* Red button for take action */
+}
+
+
+
+/* Styling for anchor tags in the customer table */
+a {
+    color: white;           /* White text */
+    text-decoration: none;  /* No underline */
+    cursor: pointer;        /* Pointer cursor to indicate it's clickable */
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Registration</title>
+    <link rel="stylesheet" href="n.css">
+</head>
+<body>
+    <!-- Background Image -->
+    <div class="background"></div>
+
+    <!-- Admin Registration Icon -->
+    <div class="admin-icon">
+        <img src="admin-icon.png" alt="Admin Registration" onclick="showAdminRegistration()">
+    </div>
+
+    <!-- Login Form -->
+    <div class="login-container">
+        <div class="login-box">
+            <h2>Login</h2>
+            <form id="login-form">
+                <label for="login-user-type">Login As:</label>
+                <select id="login-user-type" name="user-type" required onchange="toggleLoginFields()">
+                    <option value="customer">Customer</option>
+                    <option value="admin">Admin</option>
+                    <option value="owner">Owner</option>
+                </select>
+
+                <!-- Customer-specific fields -->
+                <div id="customer-fields">
+                    <label for="customer-username">Email:</label>
+                    <input type="text" id="customer-username" name="customer-username" placeholder="Enter your university email id" required>
+                </div>
+
+                <!-- Owner-specific fields -->
+                <div id="owner-fields" style="display: none;">
+                    <label for="restaurant-name-login">Restaurant Name:</label>
+                    <input type="text" id="restaurant-name-login" name="restaurant-name-login" placeholder="Enter your restaurant name">
+                </div>
+
+                <!-- Admin-specific fields -->
+                <div id="admin-fields" style="display: none;">
+                    <label for="admin-id">Admin ID:</label>
+                    <input type="text" id="admin-id" name="admin-id" placeholder="Enter your Admin ID">
+                </div>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+                <button type="submit">Login</button>
+                <p>Don't have an account? <a href="#" onclick="showRegistration()">Register here</a></p>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="common-icon" onclick="showCommonRegistration()">
+        <img src="common-icon.png" alt="User/ Owner Registration">
+    </div>
+    
+    
+    <!-- Registration Form -->
+    <div class="register-container" style="display: none;">
+        <div class="register-box">
+            <h2>Register</h2>
+            <form id="register-form">
+                <label for="register-user-type">Register As:</label>
+                <select id="register-user-type" name="user-type" required onchange="toggleRegistrationFields()">
+                    <option value="customer">Customer</option>
+                    <option value="owner">Owner</option>
+                </select>
+
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+                <label for="contact">Contact Number:</label>
+                <input type="contact" id="contact" name="contact" placeholder="Enter your contact number" required>
+
+                <!-- Owner-specific fields -->
+                <div id="register-owner-fields" style="display: none;">
+                    <label for="restaurant-name">Restaurant Name:</label>
+                    <input type="text" id="restaurant-name" name="restaurant-name" placeholder="Enter your restaurant's name">
+
+                    <label for="fssai-license">FSSAI License Number:</label>
+                    <input type="text" id="fssai-license" name="fssai-license" placeholder="Enter your FSSAI license number">
+
+                    <label for="pan-card">PAN Card:</label>
+                    <input type="file" id="pan-card" name="pan-card" accept="image/*">
+
+                    <label for="gst">GST Number:</label>
+                    <input type="text" id="gst" name="gst" placeholder="Enter your GST number">
+
+                    <label for="menu">Upload Menu:</label>
+                    <input type="file" id="menu" name="menu" accept=".xlsx, .xls">
+                </div>
+
+                <button type="submit">Register</button>
+                <p>Already have an account? <a href="#" onclick="showLogin()">Login here</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="n.js"></script>
+</body>
+</html>
